@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: white;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+header {
+    height: 80px;
+
+    background: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    border-bottom: 3px solid #ff1e1e;
+}
+
+.user-link {
+    text-decoration: none;
+}
+
+header h1 {
+    text-transform: uppercase;
+}
+
+.vermelho {
+    color: #ff1e1e;
+}
+
+.menu-btn {
+    font-size: 35px;
+    cursor: pointer;
+    color: #ff1e1e;
+}
+
+.user-icon {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+#sidebar {
+
+    position: fixed;
+
+    top: 80px;
+    left: -260px;
+
+    width: 260px;
+    height: 100vh;
+
+    background: #1b1b1b;
+
+    transition: 0.3s;
+
+    padding: 20px;
+
+    border-right: 2px solid #ff1e1e;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#sidebar h2 {
+    color: #ff1e1e;
+    margin-bottom: 20px;
+}
+
+#sidebar ul {
+    list-style: none;
+}
+
+#sidebar li {
+
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    background: #252525;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+#sidebar li:hover {
+    background: #ff1e1e;
+}
+
+#sidebarcatego {
+    text-align: center;
+}
+
+main {
+    padding: 30px;
+}
+
+/*CSS PARA O CAMPO DE BUSCA, DESATIVADO ATÉ O MOMENTO*/
+
+/* .search-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 40px;
+}
+
+.search-container input {
+
+    width: 600px;
+
+    padding: 15px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 10px 0 0 10px;
+
+    background: #1f1f1f;
+
+    color: white;
+}
+
+.search-container button {
+
+    width: 70px;
+
+    border: none;
+
+    background: #ff1e1e;
+
+    color: white;
+
+    font-size: 20px;
+
+    border-radius: 0 10px 10px 0;
+
+    cursor: pointer;
+} */
+
+/*FIM O CSS DO CAMPO DE BUSCA*/
+
+
+/* INICIO CONTAINER DO PRODUTO MOSTRADO */
+.produto-container {
+
+    max-width: 1000px;
+
+    margin: 50px auto;
+
+    background: #1b1b1b;
+
+    border: 1px solid #333;
+
+    border-radius: 15px;
+
+    padding: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 50px;
+
+    box-shadow: 0 0 20px rgba(255, 30, 30, 0.1);
+}
+
+.produto-container img {
+
+    width: 380px;
+
+    height: 380px;
+
+    object-fit: contain;
+
+    background: #252525;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    border: 1px solid #333;
+}
+
+.info-produto {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.info-produto h2 {
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+.preco {
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    color: #ff1e1e;
+
+    margin-bottom: 25px;
+}
+
+.descricao {
+
+    font-size: 18px;
+
+    color: #cfcfcf;
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+.info-produto button {
+
+    width: 300px;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff1e1e;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.info-produto button:hover {
+
+    background: #d10000;
+
+    transform: translateY(-3px);
+}
+
+/* FIM DO CONTAINER DO PRODUTO MOSTRADO */
+
+
+
+/*BOtão de voltar*/
+.voltar-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-voltar {
+    display: inline-block;
+
+    justify-content: center;
+
+    padding: 12px 25px;
+
+    background: #252525;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    border: 1px solid #333;
+
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background: #ff1e1e;
+}
+
+/*FIM DO BOTÃO DE VOLTAR*/
+
+
+
+
+
+
+
+
+
+
+footer {
+
+    position: fixed;
+
+    bottom: 0;
+
+    margin-top: auto;
+
+    text-align: center;
+
+    padding: 25px;
+
+    padding-left: 40%;
+
+    color: #777;
+
+    font-size: 14px;
+}

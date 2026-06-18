@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #121212;
+    color: white;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+
+    color: #ff1e1e;
+
+    font-size: 42px;
+
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+    text-transform: uppercase;
+}
+
+h2{
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+/*Quadrado que tem tudo dentro */
+.cadastro-container{
+    width: 450px;
+
+    margin: 0 auto;
+
+    background-color: #1b1b1b;
+
+    border: 1px solid #2f2f2f;
+
+    border-radius: 15px;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    box-shadow: 0 0 20px rgba(255, 30, 30, 0.15);
+}
+
+/*  Container que junta o ícone e o input no mesmo espaço */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Icones dos inputs  */
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff; 
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+}
+
+/*Campos para preencher com as infos*/
+input{
+    width: 100%;
+
+    height: 55px;
+
+    /* ALTERADO: Aumentei o padding esquerdo para 46px para dar espaço pro ícone */
+    padding: 0 15px 0 46px; 
+
+    border: 1px solid #333;
+
+    border-radius: 10px;
+
+    background-color: #252525;
+
+    color: white;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+/*Cor das letras no input*/
+input::placeholder{
+    color: #999;
+}
+
+/*Corzinha ao clicar no input do form*/
+input:focus{
+    outline: none;
+
+    border-color: #ff1e1e;
+
+    box-shadow: 0 0 8px rgba(255, 30, 30, 0.4);
+}
+
+
+/*Botão de cadastrar*/
+button{
+    width: 100%;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background-color: #ff1e1e;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: #d10000;
+
+    transform: translateY(-2px);
+}
+
+.login-link{
+    text-align: center;
+
+    margin-top: 10px;
+
+    color: #bdbdbd;
+}
+
+.login-link a{
+    color: #ff1e1e;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.login-link a:hover{
+    text-decoration: underline;
+}
+
+/*Finalzinho da pagina */
+footer{
+    margin-top: auto;
+
+    text-align: center;
+
+    padding: 25px;
+
+    color: #777;
+
+    font-size: 14px;
+}

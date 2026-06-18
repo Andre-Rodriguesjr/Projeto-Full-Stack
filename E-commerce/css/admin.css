@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: white;
+
+    main-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+header {
+    height: 80px;
+
+    background: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding: 0 30px;
+
+    border-bottom: 3px solid #ff1e1e;
+
+    position: relative;
+}
+
+header h1 {
+    text-transform: uppercase;
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.user-link{
+    text-decoration: none;
+}
+
+header h1 {
+    text-transform: uppercase;
+}
+
+.vermelho {
+    color: #ff1e1e;
+}
+
+.menu-btn {
+    font-size: 35px;
+    cursor: pointer;
+    color: #ff1e1e;
+}
+
+.user-icon {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+h2{
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+
+.form-admin {
+
+    width: 500px;
+
+    margin: 50px auto;
+
+    background: #1b1b1b;
+
+    border: 1px solid #333;
+
+    border-radius: 15px;
+
+    padding: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.form-admin h2 {
+
+    text-align: center;
+
+    color: #ff1e1e;
+
+    margin-bottom: 10px;
+}
+
+.form-admin input,
+.form-admin select {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: 1px solid #333;
+
+    border-radius: 8px;
+
+    background: #252525;
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form-admin input:focus,
+.form-admin select:focus {
+
+    border-color: #ff1e1e;
+}
+
+.form-admin input::placeholder {
+
+    color: #999;
+}
+
+.form-admin button {
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #ff1e1e;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.form-admin button:hover {
+
+    background: #d10000;
+
+    transform: translateY(-2px);
+}
