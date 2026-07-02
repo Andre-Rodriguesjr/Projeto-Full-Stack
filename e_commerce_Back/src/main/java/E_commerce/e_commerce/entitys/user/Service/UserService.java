@@ -3,6 +3,7 @@ package E_commerce.e_commerce.entitys.user.Service;
 import E_commerce.e_commerce.entitys.user.Repository.UserRepository;
 import E_commerce.e_commerce.entitys.user.User;
 import E_commerce.e_commerce.entitys.user.userDTO.UserRegisterDTO;
+import E_commerce.e_commerce.entitys.user.userDTO.UserResponseDTO;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class UserService {
             throw new IllegalArgumentException("Esse e-mail já foi cadastrado");
         }
 
-        if(repository.existsByUsername(dto.getUsername())){
+        if (repository.existsByUsername(dto.getUsername())) {
             throw new IllegalArgumentException("Esse nome de usuário já está em uso");
         }
 
@@ -45,17 +46,33 @@ public class UserService {
     }
 
     //Listar todos os usuarios
-    public List<User> listUsers(){
-        return repository.findAll();
+    public List<UserResponseDTO> listUsers() {
+        return repository.findAll()
+                .stream()
+                .map(user -> new UserResponseDTO(
+                        user.getId(),
+                        user.getName(),
+                        user.getUsername(),
+                        user.getEmail(),
+                        user.getTelephone()
+                ))
+                .toList();
     }
 
     //Listar o usuario pelo id
-    public Optional<User> findById(Long id){
-        return repository.findById(id);
+    public Optional<UserResponseDTO> findById(Long id) {
+        return repository.findById(id)
+                .map(user -> new UserResponseDTO(
+                        user.getId(),
+                        user.getName(),
+                        user.getUsername(),
+                        user.getEmail(),
+                        user.getTelephone()
+                ));
     }
 
     //Atualizar o usuario se ele existir
-    public User updateUser(Long id, UserRegisterDTO dto){
+    public UserResponseDTO updateUser(Long id, UserRegisterDTO dto) {
 
         User user = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
@@ -65,24 +82,31 @@ public class UserService {
         user.setEmail(dto.getEmail());
         user.setTelephone(dto.getTelephone());
 
-        if(dto.getPassword() != null && !dto.getPassword().isBlank()){
-            String encryptedPassword = passwordEncoder.encode(dto.getPassword());
-            user.setPassword(encryptedPassword);
+        if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
+            user.setPassword(passwordEncoder.encode(dto.getPassword()));
         }
 
-        return repository.save(user);
+        User updatedUser = repository.save(user);
+
+        return new UserResponseDTO(
+                updatedUser.getId(),
+                updatedUser.getName(),
+                updatedUser.getUsername(),
+                updatedUser.getEmail(),
+                updatedUser.getTelephone()
+        );
     }
 
-    public void deleteUserById(Long id){
+    public void deleteUserById(Long id) {
 
-       if(!repository.existsById(id)){
-           throw new IllegalArgumentException("Esse usuario não existe");
-       }
+        if (!repository.existsById(id)) {
+            throw new IllegalArgumentException("Esse usuario não existe");
+        }
 
         repository.deleteById(id);
     }
 
-    public Optional<User> findByEmail(String email){
+    public Optional<User> findByEmail(String email) {
         return repository.findByEmail(email);
     }
 
