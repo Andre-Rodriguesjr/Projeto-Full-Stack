@@ -22,7 +22,7 @@ public class ProductService {
     }
 
     //Adicionar produto
-    public Product addProduct(ProductRegisterDTO dto) {
+    public Product createProduct(ProductRegisterDTO dto) {
 
         Category category = categoryRepository.findById(dto.getCategoryID())
                 .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada"));
