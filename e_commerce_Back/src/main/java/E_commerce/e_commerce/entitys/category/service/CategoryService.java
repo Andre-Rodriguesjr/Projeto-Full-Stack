@@ -2,10 +2,12 @@ package E_commerce.e_commerce.entitys.category.service;
 
 import E_commerce.e_commerce.entitys.category.Category;
 import E_commerce.e_commerce.entitys.category.repository.CategoryRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;

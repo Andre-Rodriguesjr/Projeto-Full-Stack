@@ -35,6 +35,6 @@ public class ProductRegisterDTO {
     @NotBlank
     private String imageUrl;
 
-    @NotBlank
+    @NotNull
     private Long categoryId;
 }

@@ -2,26 +2,56 @@ package E_commerce.e_commerce.entitys.products.controller;
 
 import E_commerce.e_commerce.entitys.products.Product;
 import E_commerce.e_commerce.entitys.products.productsDTO.ProductRegisterDTO;
+import E_commerce.e_commerce.entitys.products.productsDTO.ProductResponseDTO;
 import E_commerce.e_commerce.entitys.products.service.ProductService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("producties")
+@RequestMapping("products")
 public class ProductController {
 
     private final ProductService productService;
 
-    public ProductController(ProductService productService){
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
+    //Criar / Adicionar produtos
     @PostMapping
-    public Product createProduct(@RequestBody ProductRegisterDTO dto) {
-        return productService.createProduct(dto);
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody @Valid ProductRegisterDTO dto) {
+        ProductResponseDTO product = productService.createProduct(dto);
+        return ResponseEntity.ok(product);
     }
 
+    //Achar produto pelo ID
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponseDTO> findById(@PathVariable Long id) {
+        return productService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 
+    //Listar todos os produtos
+    @GetMapping
+    public ResponseEntity<List<ProductResponseDTO>> listProducts() {
+        return ResponseEntity.ok(productService.listProducts());
+    }
+
+    //Deletar produto pelo ID
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+    }
+
+    //Update product
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Long id, @RequestBody @Valid ProductRegisterDTO dto) {
+        ProductResponseDTO product = productService.updateProduct(id, dto);
+        return ResponseEntity.ok(product);
+    }
 }

@@ -8,24 +8,25 @@ import E_commerce.e_commerce.entitys.products.productsDTO.ProductResponseDTO;
 import E_commerce.e_commerce.entitys.products.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
-    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
+    public ProductService(ProductRepository productRepository,
+                          CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
     }
 
-    //Adicionar produto
-    public Product createProduct(ProductRegisterDTO dto) {
+    // Criar produto
+    public ProductResponseDTO createProduct(ProductRegisterDTO dto) {
 
-        Category category = categoryRepository.findById(dto.getCategoryID())
-                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada"));
+        Category category = categoryRepository.findById(dto.getCategoryId())
+                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada."));
 
         Product product = new Product();
 
@@ -36,32 +37,33 @@ public class ProductService {
         product.setImageUrl(dto.getImageUrl());
         product.setCategory(category);
 
-        return productRepository.save(product);
+        Product savedProduct = productRepository.save(product);
+
+        return convertToDTO(savedProduct);
     }
 
-    //Listar produto
-    public List<ProductResponseDTO> listProduct(){
-      return productRepository.findAll()
-              .stream()
-              .map(product -> new ProductResponseDTO(
-                      product.getId(),
-                      product.getName(),
-                      product.getDescription(),
-                      product.getPrice(),
-                      product.getQuantityStock(),
-                      product.getImageUrl(),
-                      product.getCategory().getName()
-              ))
-              .toList();
+    // Listar produtos
+    public List<ProductResponseDTO> listProducts() {
+        return productRepository.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .toList();
     }
 
-    //Renomear produto
-    public ProductResponseDTO updateProduct(Long id, ProductRegisterDTO dto){
+    // Buscar produto por id
+    public Optional<ProductResponseDTO> findById(Long id) {
+        return productRepository.findById(id)
+                .map(this::convertToDTO);
+    }
+
+    // Atualizar produto
+    public ProductResponseDTO updateProduct(Long id, ProductRegisterDTO dto) {
+
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
+                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado."));
 
-        Category category = categoryRepository.findById(dto.getCategoryID())
-                .orElseThrow(()-> new IllegalArgumentException("Categoria não encontrada"));
+        Category category = categoryRepository.findById(dto.getCategoryId())
+                .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada."));
 
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
@@ -70,21 +72,32 @@ public class ProductService {
         product.setImageUrl(dto.getImageUrl());
         product.setCategory(category);
 
-        Product updateProduct = productRepository.save(product);
+        Product updatedProduct = productRepository.save(product);
 
-        return new ProductResponseDTO(
-                updateProduct.getId(),
-                updateProduct.getName(),
-                updateProduct.getDescription(),
-                updateProduct.getPrice(),
-                updateProduct.getQuantityStock(),
-                updateProduct.getImageUrl(),
-                updateProduct.getCategory().getName()
-        );
+        return convertToDTO(updatedProduct);
     }
 
-    //Deletar produto
-    public void deleteProduct(Long id){
+    // Deletar produto
+    public void deleteProduct(Long id) {
+
+        if (!productRepository.existsById(id)) {
+            throw new IllegalArgumentException("Produto não encontrado.");
+        }
+
         productRepository.deleteById(id);
+    }
+
+    // Converter Entity para DTO
+    private ProductResponseDTO convertToDTO(Product product) {
+
+        return new ProductResponseDTO(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                product.getQuantityStock(),
+                product.getImageUrl(),
+                product.getCategory().getName()
+        );
     }
 }
