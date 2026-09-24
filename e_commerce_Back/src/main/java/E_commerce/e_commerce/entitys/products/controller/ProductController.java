@@ -1,6 +1,5 @@
 package E_commerce.e_commerce.entitys.products.controller;
 
-import E_commerce.e_commerce.entitys.products.Product;
 import E_commerce.e_commerce.entitys.products.productsDTO.ProductRegisterDTO;
 import E_commerce.e_commerce.entitys.products.productsDTO.ProductResponseDTO;
 import E_commerce.e_commerce.entitys.products.service.ProductService;
@@ -9,10 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("products")
+@CrossOrigin(origins = "http://localhost:8080")
 public class ProductController {
 
     private final ProductService productService;
