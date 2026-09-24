@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Perfil</title>
+
+    <link rel="stylesheet" href="css/perfilUser.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="menu-btn">☰</div>
+
+        <h1>
+            <span class="vermelho">Loja</span> do mestre André
+        </h1>
+
+        <a href="index.html" class="back-link">🏠</a>
+
+    </header>
+
+
+    <main>
+
+        <section class="perfil-container">
+
+            <div class="perfil-icon">
+                👤
+            </div>
+
+            <h2>Meu Perfil</h2>
+
+
+            <form id="perfilForm">
+
+                <div class="info">
+
+                    <label for="nome">Nome</label>
+
+                    <input type="text" id="nome" disabled>
+
+                </div>
+
+
+                <div class="info">
+
+                    <label for="username">Nome de usuário</label>
+
+                    <input type="text" id="username" disabled>
+
+                </div>
+
+
+                <div class="info">
+
+                    <label for="email">E-mail</label>
+
+                    <input type="email" id="email" disabled>
+
+                </div>
+
+
+                <div class="info">
+
+                    <label for="telephone">Telefone</label>
+
+                    <input type="text" id="telephone" disabled>
+
+                </div>
+
+
+                <!-- Senha só aparece quando estiver editando -->
+
+                <div class="info senha-container" id="senhaContainer">
+
+                    <label for="password">
+                        Nova senha
+                    </label>
+
+                    <input type="password" id="password" placeholder="Digite uma nova senha">
+
+                    <small>
+                        Deixe vazio caso não queira alterar a senha.
+                    </small>
+
+                </div>
+
+
+                <div class="botoes">
+
+                    <button type="button" id="editarBtn">
+                        Editar perfil
+                    </button>
+
+
+                    <button type="submit" id="salvarBtn">
+                        Salvar alterações
+                    </button>
+
+
+                    <button type="button" id="cancelarBtn">
+                        Cancelar
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <button id="logout">
+                Sair da conta
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            &copy; 2026 Loja do mestre André.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+    <script src="javascript/perfilUser.js"></script>
+
+</body>
+
+</html>

@@ -21,27 +21,27 @@
 
         <div class="input-container">
             <i data-lucide="user" class="input-icon"></i>
-            <input type="text" placeholder="Nome">
+            <input id="name" type="text" placeholder="Nome" required>
         </div>
 
         <div class="input-container">
             <i data-lucide="user-round" class="input-icon"></i>
-            <input type="text" placeholder="Nome de usuário">
+            <input id="username" type="text" placeholder="Nome de usuário" required>
         </div>
 
         <div class="input-container">
             <i data-lucide="mail" class="input-icon"></i>
-            <input type="email" placeholder="Email">
+            <input id="email" type="email" placeholder="Email" required>
         </div>
 
         <div class="input-container">
             <i data-lucide="phone" class="input-icon"></i>
-            <input type="text" placeholder="Telefone">
+            <input id="telephone" type="text" placeholder="Telefone" required>
         </div>
 
         <div class="input-container">
             <i data-lucide="lock" class="input-icon"></i>
-            <input type="password" placeholder="Senha">
+            <input id="password" type="password" placeholder="Senha" required>
         </div>
 
         <button type="submit">Cadastrar</button>
@@ -60,6 +60,8 @@
     <script>
         lucide.createIcons();
     </script>
+
+    <script src="javascript/cadastro.js"></script>
 
 </body>
 
