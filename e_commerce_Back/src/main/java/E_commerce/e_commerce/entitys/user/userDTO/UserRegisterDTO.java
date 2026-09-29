@@ -31,4 +31,6 @@ public class UserRegisterDTO {
     @NotBlank
     @Size(min = 8, max = 30)
     private String password;
+
+
 }

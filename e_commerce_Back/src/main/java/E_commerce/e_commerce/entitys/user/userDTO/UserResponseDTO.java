@@ -1,5 +1,6 @@
 package E_commerce.e_commerce.entitys.user.userDTO;
 
+import E_commerce.e_commerce.entitys.user.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class UserResponseDTO {
     private String username;
     private String email;
     private String telephone;
+    private UserRole role;
 
 
 }

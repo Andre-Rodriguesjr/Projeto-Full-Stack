@@ -6,6 +6,7 @@ import E_commerce.e_commerce.entitys.user.userDTO.UserResponseDTO;
 import E_commerce.e_commerce.entitys.user.userDTO.UserRegisterDTO;
 import E_commerce.e_commerce.entitys.user.userDTO.UserUpdateDTO;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,9 +46,14 @@ public class UserController {
 
     //Atualizar usuarios
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateDTO dto) {
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateDTO dto) {
 
-        return ResponseEntity.ok(userService.updateUser(id,dto));
+        try{
+            return ResponseEntity.ok(userService.updateUser(id, dto));
+
+        } catch(IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     //Deletar o usuario pelo id

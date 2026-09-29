@@ -6,6 +6,7 @@ import E_commerce.e_commerce.entitys.user.userDTO.UserLoginDTO;
 import E_commerce.e_commerce.entitys.user.userDTO.UserRegisterDTO;
 import E_commerce.e_commerce.entitys.user.userDTO.UserResponseDTO;
 import E_commerce.e_commerce.entitys.user.userDTO.UserUpdateDTO;
+import E_commerce.e_commerce.entitys.user.UserRole;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,7 @@ public class UserService {
         user.setEmail(dto.getEmail());
         user.setTelephone(dto.getTelephone());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setRole(UserRole.USER);
 
         User savedUser = repository.save(user);
 
@@ -47,7 +49,8 @@ public class UserService {
                 savedUser.getName(),
                 savedUser.getUsername(),
                 savedUser.getEmail(),
-                savedUser.getTelephone()
+                savedUser.getTelephone(),
+                savedUser.getRole()
         );
     }
 
@@ -60,7 +63,8 @@ public class UserService {
                         user.getName(),
                         user.getUsername(),
                         user.getEmail(),
-                        user.getTelephone()
+                        user.getTelephone(),
+                        user.getRole()
                 ))
                 .toList();
     }
@@ -73,7 +77,8 @@ public class UserService {
                         user.getName(),
                         user.getUsername(),
                         user.getEmail(),
-                        user.getTelephone()
+                        user.getTelephone(),
+                        user.getRole()
                 ));
     }
 
@@ -123,7 +128,8 @@ public class UserService {
                 updatedUser.getName(),
                 updatedUser.getUsername(),
                 updatedUser.getEmail(),
-                updatedUser.getTelephone()
+                updatedUser.getTelephone(),
+                updatedUser.getRole()
         );
     }
 
@@ -155,7 +161,8 @@ public class UserService {
                 user.getName(),
                 user.getUsername(),
                 user.getEmail(),
-                user.getTelephone()
+                user.getTelephone(),
+                user.getRole()
         );
 
     }
