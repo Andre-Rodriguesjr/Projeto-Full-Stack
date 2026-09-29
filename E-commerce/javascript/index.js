@@ -21,13 +21,33 @@ if (user) {
 
     const userData = JSON.parse(user);
 
-    userLink.href = "perfil.html";
+    /*
+     * Usuário logado
+     */
 
-    userName.textContent = userData.name;
+    userLink.href = "perfilUser.html";
+
+    userName.textContent = userData.username;
+
+
+    /*
+     * Verifica se é ADMIN
+     */
+
+    if (userData.role === "ADMIN") {
+
+        adminLink.style.display = "block";
+
+    }
 
 } else {
+
+    /*
+     * Ninguém logado
+     */
 
     userLink.href = "login.html";
 
     userName.textContent = "Entrar";
+
 }

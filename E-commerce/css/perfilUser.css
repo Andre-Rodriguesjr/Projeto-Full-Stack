@@ -11,7 +11,9 @@
 
 body {
     font-family: Arial, sans-serif;
+
     background-color: #121212;
+
     color: #ffffff;
 
     min-height: 100vh;
@@ -31,7 +33,9 @@ header {
     background-color: #1a1a1a;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 0 30px;
@@ -42,6 +46,7 @@ header {
 
 header h1 {
     font-size: 28px;
+
     letter-spacing: 1px;
 }
 
@@ -51,7 +56,7 @@ header h1 {
 }
 
 
-/* Botão do menu */
+/* Menu */
 
 .menu-btn {
     font-size: 28px;
@@ -69,7 +74,7 @@ header h1 {
 }
 
 
-/* Botão voltar para a loja */
+/* Botão voltar */
 
 .back-link {
     text-decoration: none;
@@ -93,7 +98,9 @@ main {
     flex: 1;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 50px 20px;
@@ -101,11 +108,12 @@ main {
 
 
 /* =========================
-   CONTAINER DO PERFIL
+   PERFIL
 ========================= */
 
 .perfil-container {
     width: 100%;
+
     max-width: 600px;
 
     background-color: #1e1e1e;
@@ -121,11 +129,12 @@ main {
 
 
 /* =========================
-   ÍCONE DO USUÁRIO
+   ÍCONE
 ========================= */
 
 .perfil-icon {
     width: 100px;
+
     height: 100px;
 
     border-radius: 50%;
@@ -135,14 +144,17 @@ main {
     border: 3px solid #e10600;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     font-size: 50px;
 
     margin: 0 auto 20px;
 
-    box-shadow: 0 0 20px rgba(225, 6, 0, 0.25);
+    box-shadow:
+        0 0 20px rgba(225, 6, 0, 0.25);
 }
 
 
@@ -167,6 +179,7 @@ main {
     display: block;
 
     width: 60px;
+
     height: 3px;
 
     background-color: #e10600;
@@ -176,16 +189,21 @@ main {
 
 
 /* =========================
-   INFORMAÇÕES
+   FORMULÁRIO
 ========================= */
 
-.info-container {
+#perfilForm {
     display: flex;
+
     flex-direction: column;
 
-    gap: 15px;
+    gap: 12px;
 }
 
+
+/* =========================
+   CAMPOS
+========================= */
 
 .info {
     background-color: #292929;
@@ -207,7 +225,7 @@ main {
 }
 
 
-/* Nome dos campos */
+/* Labels */
 
 .info label {
     display: block;
@@ -218,15 +236,13 @@ main {
 
     text-transform: uppercase;
 
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 
     letter-spacing: 0.5px;
 }
 
 
-/* =========================
-   INPUTS
-========================= */
+/* Inputs */
 
 .info input {
     width: 100%;
@@ -245,7 +261,7 @@ main {
 }
 
 
-/* Input bloqueado */
+/* Inputs desativados */
 
 .info input:disabled {
     color: #ffffff;
@@ -254,7 +270,7 @@ main {
 }
 
 
-/* Input quando estiver sendo editado */
+/* Inputs durante edição */
 
 .info input:not(:disabled) {
     background-color: #1f1f1f;
@@ -265,7 +281,7 @@ main {
 
     padding: 10px;
 
-    margin-top: 5px;
+    margin-top: 3px;
 
     transition: 0.2s;
 }
@@ -276,7 +292,8 @@ main {
 .info input:not(:disabled):focus {
     border-color: #e10600;
 
-    box-shadow: 0 0 5px rgba(225, 6, 0, 0.25);
+    box-shadow:
+        0 0 5px rgba(225, 6, 0, 0.25);
 }
 
 
@@ -305,13 +322,13 @@ main {
 ========================= */
 
 .botoes {
-    margin-top: 30px;
+    margin-top: 18px;
 
     display: flex;
 
-    gap: 10px;
-
     flex-direction: column;
+
+    gap: 10px;
 }
 
 
@@ -348,7 +365,8 @@ main {
 
     transform: translateY(-1px);
 
-    box-shadow: 0 5px 15px rgba(225, 6, 0, 0.25);
+    box-shadow:
+        0 5px 15px rgba(225, 6, 0, 0.25);
 }
 
 
@@ -368,7 +386,8 @@ main {
 
     transform: translateY(-1px);
 
-    box-shadow: 0 5px 15px rgba(225, 6, 0, 0.25);
+    box-shadow:
+        0 5px 15px rgba(225, 6, 0, 0.25);
 }
 
 
@@ -391,7 +410,7 @@ main {
 
 
 /* =========================
-   BOTÃO LOGOUT
+   LOGOUT
 ========================= */
 
 #logout {
@@ -400,8 +419,6 @@ main {
     margin-top: 30px;
 
     padding: 13px;
-
-    border: none;
 
     border-radius: 6px;
 
@@ -426,7 +443,8 @@ main {
 
     transform: translateY(-1px);
 
-    box-shadow: 0 5px 15px rgba(225, 6, 0, 0.25);
+    box-shadow:
+        0 5px 15px rgba(225, 6, 0, 0.25);
 }
 
 
@@ -485,6 +503,7 @@ footer {
 
     .perfil-icon {
         width: 85px;
+
         height: 85px;
 
         font-size: 42px;
@@ -497,28 +516,12 @@ footer {
 
 
     .info {
-        background-color: #292929;
-
-        border-left: 4px solid #e10600;
-
-        padding: 15px 18px;
-
-        border-radius: 6px;
-
-        transition: 0.2s;
+        padding: 13px 15px;
     }
 
 
     .info input {
         font-size: 16px;
-        margin-bottom: 4px;
-
     }
-
-   #perfilForm {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
 
 }

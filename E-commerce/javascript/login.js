@@ -9,27 +9,32 @@ loginForm.addEventListener("submit", async (event) => {
 
     try {
 
-        const response = await fetch("http://localhost:8080/users/login", {
-            method: "POST",
+        const response = await fetch(
+            "http://localhost:8080/users/login",
+            {
+                method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-            body: JSON.stringify({
-                email: email,
-                password: senha
-            })
-        });
+                body: JSON.stringify({
+                    email: email,
+                    password: senha
+                })
+            }
+        );
 
         if (!response.ok) {
 
             const erro = await response.text();
 
             console.log("Status:", response.status);
-            console.log("Erro retornado pelo Spring:", erro);
+            console.log("Resposta do Spring:", erro);
 
-            throw new Error(`Erro ${response.status}`);
+            throw new Error(
+                erro || "Erro ao realizar login"
+            );
         }
 
         const user = await response.json();
@@ -37,14 +42,31 @@ loginForm.addEventListener("submit", async (event) => {
         console.log("Login realizado com sucesso!");
         console.log(user);
 
-        localStorage.setItem("user", JSON.stringify(user));
+        /*
+         * O usuário agora também terá:
+         *
+         * role: "USER"
+         * ou
+         * role: "ADMIN"
+         */
+
+        localStorage.setItem(
+            "user",
+            JSON.stringify(user)
+        );
 
         window.location.href = "index.html";
 
     } catch (error) {
 
-        console.error("Erro:", error);
+        console.error(
+            "Erro:",
+            error
+        );
 
-        alert(error.message);
+        alert(
+            error.message
+        );
     }
+
 });
