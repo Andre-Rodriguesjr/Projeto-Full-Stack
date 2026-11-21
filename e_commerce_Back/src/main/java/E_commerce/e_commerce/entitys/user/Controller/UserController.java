@@ -30,7 +30,7 @@ public class UserController {
         return ResponseEntity.ok(userService.createUser(dto));
     }
 
-    //ACcar usuario pelo id
+    //Achar usuario pelo id
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id){
         return userService.findById(id)
@@ -49,6 +49,7 @@ public class UserController {
     public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody @Valid UserUpdateDTO dto) {
 
         try{
+
             return ResponseEntity.ok(userService.updateUser(id, dto));
 
         } catch(IllegalArgumentException e){
