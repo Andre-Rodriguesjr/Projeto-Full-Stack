@@ -1,6 +1,6 @@
 package E_commerce.e_commerce.entitys.category;
 
-import E_commerce.e_commerce.entitys.products.Product;
+///import E_commerce.e_commerce.entitys.products.Product;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    @JsonIgnore
-    private List<Product> products;
+//    @OneToMany(mappedBy = "category")
+//    @JsonIgnore
+    //private List<Product> products;
 }
