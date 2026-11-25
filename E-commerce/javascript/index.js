@@ -25,7 +25,7 @@ if (user) {
      * Usuário logado
      */
 
-    userLink.href = "perfilUser.html";
+    userLink.href = "perfil.html";
 
     userName.textContent = userData.username;
 

@@ -1,23 +1,25 @@
 const loginForm = document.querySelector(".login-container");
+const errorEl = document.getElementById("login-error");
 
 loginForm.addEventListener("submit", async (event) => {
-
     event.preventDefault();
 
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
 
-    try {
+    if (errorEl) {
+        errorEl.textContent = "";
+        errorEl.style.display = "none";
+    }
 
+    try {
         const response = await fetch(
             "http://localhost:8080/users/login",
             {
                 method: "POST",
-
                 headers: {
                     "Content-Type": "application/json"
                 },
-
                 body: JSON.stringify({
                     email: email,
                     password: senha
@@ -26,15 +28,22 @@ loginForm.addEventListener("submit", async (event) => {
         );
 
         if (!response.ok) {
+            const rawText = await response.text();
+            let message = "Erro ao realizar login";
 
-            const erro = await response.text();
+            try {
+                const parsed = JSON.parse(rawText);
+                message = parsed.message || message;
+            } catch (_) {
+                if (rawText) {
+                    message = rawText;
+                }
+            }
 
             console.log("Status:", response.status);
-            console.log("Resposta do Spring:", erro);
+            console.log("Resposta do Spring:", rawText);
 
-            throw new Error(
-                erro || "Erro ao realizar login"
-            );
+            throw new Error(message);
         }
 
         const user = await response.json();
@@ -44,10 +53,9 @@ loginForm.addEventListener("submit", async (event) => {
 
         /*
          * O usuário agora também terá:
-         *
-         * role: "USER"
+         * - role: "USER"
          * ou
-         * role: "ADMIN"
+         * - role: "ADMIN"
          */
 
         localStorage.setItem(
@@ -58,15 +66,13 @@ loginForm.addEventListener("submit", async (event) => {
         window.location.href = "index.html";
 
     } catch (error) {
+        console.error("Erro:", error);
 
-        console.error(
-            "Erro:",
-            error
-        );
-
-        alert(
-            error.message
-        );
+        if (errorEl) {
+            errorEl.textContent = error.message;
+            errorEl.style.display = "block";
+        } else {
+            alert(error.message);
+        }
     }
-
 });
